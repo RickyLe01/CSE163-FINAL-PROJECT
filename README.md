@@ -5,10 +5,10 @@ Analyzing the economic impacts of Vietnam due to malaria and other diseases.
 By Ricky Le, Khanh Phung, and Phu Quan
 
 ## Research Questions
-What was the mortality rate during the Malaria epidemic? We want to seek out if the impact of the Malaria disease has decreased the numbers of citizens living in rural areas. 
-How did COVID affect Vietnam’s economy? This will help us find out how much of the worldwide pandemic played a factor with Vietnam’s economy and how they responded
-What did Vietnam do to decrease the spread of Malaria? We want to see if we can build a machine learning system to predict Vietnam’s economy in the next 5 years based on their past steps.  
-Was Vietnam provided any aid to help combat the spread of Malaria? This question explores the alignment between the U.N and how they determine what third-world countries need aid. 
+- What was the mortality rate during the Malaria epidemic? We want to seek out if the impact of the Malaria disease has decreased the numbers of citizens living in rural areas. 
+- How did COVID affect Vietnam’s economy? This will help us find out how much of the worldwide pandemic played a factor with Vietnam’s economy and how they responded
+- What did Vietnam do to decrease the spread of Malaria? We want to see if we can build a machine learning system to predict Vietnam’s economy in the next 5 years based on their past steps.  
+- Was Vietnam provided any aid to help combat the spread of Malaria? This question explores the alignment between the U.N and how they determine what third-world countries need aid. 
 
 ## Motivation
 
