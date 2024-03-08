@@ -1,0 +1,56 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import numpy as np
+from sklearn.model_selection import cross_val_score
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.tree import plot_tree
+import matplotlib.pyplot as plt
+
+
+
+malaria_est_cases = pd.read_csv('Data/Malaria_Est_Cases.csv')
+
+
+X = malaria_est_cases['YEAR (CODE)'].values.reshape(-1, 1)
+y = malaria_est_cases['Numeric'].values
+
+model = LinearRegression()
+
+model.fit(X, y)
+
+
+print('Coefficients:', model.coef_)
+print('Intercept:', model.intercept_)
+
+new_year = np.array([[2029]])
+predicted_cases = model.predict(new_year)
+print('Predicted cases for 2029:', predicted_cases)
+
+
+# Helps us evaluate the performance of our model on unseen data.
+scores = cross_val_score(model, X, y, cv=5)
+
+print("Cross-validation scores:", scores)
+print("Mean score:", scores.mean())
+print("Standard deviation:", scores.std())
+
+# Prepares it for training a decision tree classifier, 
+# fits the classifier to our mortality data, calculates its accuracy, 
+# and then plots the decision tree for us.
+
+# We're trying to create a decision tree to calculate the gender and number of 
+# cases within the year from high to low.
+mortality_age = pd.read_csv('Data/Mortality_Age.csv')
+
+mortality = mortality_age[['SEX (CODE)', 'Low', 'High', 'Numeric', 'YEAR (CODE)']]
+m = DecisionTreeClassifier(max_depth=3)
+
+y = mortality['SEX (CODE)']
+X = pd.get_dummies(mortality.drop("SEX (CODE)", axis=1), drop_first=True)
+X.head()
+
+_ = m.fit(X, y)
+m.score(X, y)
+
+plt.figure(figsize=(20,12))
+_ = plot_tree(m, feature_names=X.columns)
