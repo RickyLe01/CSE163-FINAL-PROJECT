@@ -9,18 +9,28 @@ import matplotlib.pyplot as plt
 
 
 malaria_est_cases = pd.read_csv('Data/Malaria_Est_Cases.csv')
+TB_est_cases = pd.read_csv('Data/TB_Incidence.csv')
+
 
 
 X = malaria_est_cases['YEAR (CODE)'].values.reshape(-1, 1)
 y = malaria_est_cases['Numeric'].values
 
-model = LinearRegression()
+X1 = TB_est_cases['YEAR (CODE)'].values.reshape(-1, 1)
+y1 = TB_est_cases['Numeric'].values
 
-model.fit(X, y)
+model1 = LinearRegression()
+model2 = LinearRegression
+
+model1.fit(X, y)
+model2.fit(X1, y1)
 
 
-print('Coefficients:', model.coef_)
-print('Intercept:', model.intercept_)
+print('Malaria Coefficients:', model1.coef_)
+print('Malaria Intercept:', model1.intercept_)
+
+print('TB Coefficients:', model2.coef_)
+print('TB Intercept:', model2.intercept_)
 
 new_year = np.array([[2029]])
 predicted_cases = model.predict(new_year)
@@ -28,11 +38,17 @@ print('Predicted cases for 2029:', predicted_cases)
 
 
 # Helps us evaluate the performance of our model on unseen data.
-scores = cross_val_score(model, X, y, cv=5)
+m_scores = cross_val_score(model1, X, y, cv=5)
+t_scores = cross_val_score(model2, X1, y1, cv=5)
 
-print("Cross-validation scores:", scores)
-print("Mean score:", scores.mean())
-print("Standard deviation:", scores.std())
+
+print("Malaria Cross-validation scores:", m_scores)
+print("Malaria Mean score:", m_scores.mean())
+print("Malaria Standard deviation:", m_scores.std())
+
+print("TB Cross-validation scores:", t_scores)
+print("TB Mean score:", t_scores.mean())
+print("TB Standard deviation:", t_scores.std())
 
 # Prepares it for training a decision tree classifier, 
 # fits the classifier to our mortality data, calculates its accuracy, 

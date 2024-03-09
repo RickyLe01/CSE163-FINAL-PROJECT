@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+# Estimated Malaria in 2029
 plt.scatter(X, y, color='blue', label='Actual Data')
 
 plt.plot(X, model.predict(X), color='red', label='Linear Regression')
@@ -12,3 +13,15 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
+# Estimated TB in 2029
+plt.scatter(X1, y1, color='blue', label='Actual Data')
+
+plt.plot(X1, model.predict(X1), color='red', label='Linear Regression')
+
+plt.xlabel('Year')
+plt.ylabel('Number of TB Cases')
+plt.title('Linear Regression: TB Cases Over Years')
+plt.legend()
+
+plt.grid(True)
+plt.show()
