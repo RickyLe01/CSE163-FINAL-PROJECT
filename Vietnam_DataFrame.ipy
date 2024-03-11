@@ -2,6 +2,7 @@ import pandas as pd
 vietnam_malaria = pd.read_csv('Data/malaria.csv')
 vietnam_tuberculosis = pd.read_csv('Data/tuberculosis.csv')
 vietnam_mortality = pd.read_csv('Data/mortality.csv')
+vietnam_gdp = pd.read_csv('Data/GDP.csv')
 
 vietnam_malaria.drop(['GHO (URL)', 'PUBLISHSTATE (CODE)', 'PUBLISHSTATE (DISPLAY)', 
                       'PUBLISHSTATE (URL)', 'YEAR (URL)', 'COUNTRY (URL)', 
@@ -15,7 +16,7 @@ vietnam_mortality.drop(['GHO (URL)', 'PUBLISHSTATE (CODE)', 'PUBLISHSTATE (DISPL
 
 most_recent = [vietnam_malaria['YEAR (CODE)'].max(), vietnam_tuberculosis['YEAR (CODE)'].max(), vietnam_mortality['YEAR (CODE)'].max()]
 oldest = [vietnam_malaria['YEAR (CODE)'].min(), vietnam_tuberculosis['YEAR (CODE)'].min(), vietnam_mortality['YEAR (CODE)'].min()]
-# print(vietnam_malaria)
+print(vietnam_malaria)
 
 # Used this to help find the indexes that were needed from each row of data.
 
@@ -35,6 +36,9 @@ oldest = [vietnam_malaria['YEAR (CODE)'].min(), vietnam_tuberculosis['YEAR (CODE
 # Mortality_Child = vietnam_mortality.index[vietnam_mortality['GHO (CODE)'] == 'CHILDMORT_MORTALITY_10TO14'].tolist()
 # Mortality_Under_5_Months = vietnam_mortality.index[vietnam_mortality['GHO (CODE)'] == 'MDG_0000000007'].tolist()
 # Mortality_Infant = vietnam_mortality.index[vietnam_mortality['GHO (CODE)'] == 'MDG_0000000001'].tolist()
+
+# vietnam = vietnam_gdp.index[vietnam_gdp['Country Code'] == 'VNM'].tolist()
+
 
 
 indexes = {
@@ -75,16 +79,18 @@ indexes = {
                          3238, 3239, 3240, 3241, 3242, 3243, 3244, 3245, 3246, 3247, 3248, 3249, 3250, 3251, 3252, 3253, 3254, 
                          3255, 3256, 3257, 3258, 3259, 3260, 3261, 3262, 3263, 3264, 3265, 3266, 3267, 3268, 3269, 3270, 3271, 
                          3272, 3273, 3274, 3723],
-}
+    "Vietnam GDP": [208]
+ }
 
 malaria_dataframes = {}
 tuberculosis_dataframes = {}
 mortality_dataframes = {}
+gdp_dataframes = {}
 
 for dataframe_name, index_list in indexes.items():
-    mortality_dataframes[dataframe_name] = vietnam_mortality.loc[index_list]
+    gdp_dataframes[dataframe_name] = vietnam_gdp.loc[index_list]
 
-for dataframe_name, dataframe in mortality_dataframes.items():
+for dataframe_name, dataframe in gdp_dataframes.items():
     dataframe.to_csv(dataframe_name + ".csv")
 
 

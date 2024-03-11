@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+years = list(range(1990, 2022)) 
+gdp_values = [
+    96.719296, 394.583137, 2367.499331, 2558.778758, 2595.234844, 2760.717101,
+    2992.071532, 3267.225069, 3491.09141, 3586.347176, 3756.488901, 4163.514299
+]
+
+
+plt.figure(figsize=(10, 6))
+plt.plot(years[:12], gdp_values, marker='o', linestyle='-')
+
+plt.title('GDP per capita of Vietnam (1990-2021)')
+plt.xlabel('Year')
+plt.ylabel('GDP per capita (current US$)')
+
+plt.grid(True)
+plt.tight_layout()
+plt.show()

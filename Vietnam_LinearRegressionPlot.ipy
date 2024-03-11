@@ -25,3 +25,21 @@ plt.legend()
 
 plt.grid(True)
 plt.show()
+
+
+# Estimated GDP in 2026
+
+plt.figure(figsize=(10, 6))
+plt.scatter(years, gdp_values, color='blue', label='Historical GDP')
+plt.plot(future_years, predicted_gdp, color='red', linestyle='--', label='Predicted GDP')
+
+
+plt.title('GDP per capita of Vietnam (1990-2026)')
+plt.xlabel('Year')
+plt.ylabel('GDP per capita (current US$)')
+
+plt.legend()
+
+plt.grid(True)
+plt.tight_layout()
+plt.show()

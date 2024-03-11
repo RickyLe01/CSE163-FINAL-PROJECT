@@ -70,3 +70,24 @@ m.score(X, y)
 
 plt.figure(figsize=(20,12))
 _ = plot_tree(m, feature_names=X.columns)
+
+
+# ---------------------------------------------------------------------------- #
+
+# Here we're trying to create a linear regression model to predict Vietnam's GDP by 2026
+# by manually adding in the data we had from Vietnam GDP.csv and adding it to an array
+
+years = np.array(range(1990, 2002)).reshape(-1, 1)  
+gdp_values = np.array([
+    96.719296, 394.583137, 2367.499331, 2558.778758, 2595.234844, 2760.717101,
+    2992.071532, 3267.225069, 3491.09141, 3586.347176, 3756.488901, 4163.514299
+]).reshape(-1, 1)
+
+model = LinearRegression()
+model.fit(years, gdp_values)
+
+future_years = np.array(range(2022, 2027)).reshape(-1, 1)
+predicted_gdp = model.predict(future_years)
+
+for year, gdp in zip(future_years.flatten(), predicted_gdp.flatten()):
+    print(f"Predicted GDP for {year}: {gdp:.2f} (current US$)")
